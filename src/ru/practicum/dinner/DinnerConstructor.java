@@ -2,9 +2,11 @@ package ru.practicum.dinner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DinnerConstructor {
-    HashMap<String, ArrayList<String>> dishesList;
+    Map<String, List<String>> dishesList;
 
     DinnerConstructor() {
         dishesList = new HashMap<>();
@@ -17,21 +19,21 @@ public class DinnerConstructor {
         }
 
         if (dishesList.containsKey(dishType)) {
-            ArrayList<String> dishesNames = dishesList.get(dishType);
+            List<String> dishesNames = dishesList.get(dishType);
             dishesNames.add(dishName);
         } else {
-            ArrayList<String> dishesNames = new ArrayList<>();
+            List<String> dishesNames = new ArrayList<>();
             dishesNames.add(dishName);
             dishesList.put(dishType, dishesNames);
         }
     }
 
-    ArrayList<String> generateDish(ArrayList<String> requestedDishesTypes) {
-        ArrayList<String> generatedDishesList = new ArrayList<>();
+    List<String> generateDish(List<String> requestedDishesTypes) {
+        List<String> generatedDishesList = new ArrayList<>();
 
         for (String dishType : requestedDishesTypes) {
             if (checkType(dishType)) {
-                ArrayList<String> dishList = dishesList.get(dishType);
+                List<String> dishList = dishesList.get(dishType);
                 String randomDish = dishList.get(Main.random.nextInt(dishList.size()));
 
                 generatedDishesList.add(randomDish);
