@@ -13,11 +13,6 @@ public class DinnerConstructor {
     }
 
     void addDish(String dishType, String dishName) {
-        if (dishType.isEmpty() || dishName.isEmpty()) {
-            System.out.println("Тип или название блюда не может быть пустым!");
-            return;
-        }
-
         if (dishesList.containsKey(dishType)) {
             List<String> dishesNames = dishesList.get(dishType);
             dishesNames.add(dishName);

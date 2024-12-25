@@ -46,6 +46,11 @@ public class Main {
         System.out.println("Введите название блюда:");
         String dishName = scanner.nextLine();
 
+        if (dishType.isEmpty() || dishName.isEmpty()) {
+            System.out.println("Тип или название блюда не может быть пустым!");
+            return;
+        }
+
         dc.addDish(dishType, dishName);
     }
 
