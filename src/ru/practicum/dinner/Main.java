@@ -59,11 +59,17 @@ public class Main {
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). " +
                 "Для завершения ввода введите пустую строку");
         String nextItem = scanner.nextLine();
+
         List<String> requestedDishesTypes = new ArrayList<>();
 
         while (!nextItem.isEmpty()) {
-            requestedDishesTypes.add(nextItem);
-            nextItem = scanner.nextLine();
+            if (dc.checkType(nextItem)) { // перенес
+                requestedDishesTypes.add(nextItem);
+                nextItem = scanner.nextLine();
+            } else {
+                System.out.printf("Блюд типа \"%s\" нет в списке! Введите другой тип.\n\n", nextItem);
+                return;
+            }
         }
 
         dc.generateDish(requestedDishesTypes);

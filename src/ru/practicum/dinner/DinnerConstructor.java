@@ -32,20 +32,15 @@ public class DinnerConstructor {
         List<String> generatedDishesList = new ArrayList<>();
 
         for (String dishType : requestedDishesTypes) {
-            if (checkType(dishType)) {
                 List<String> dishList = dishesList.get(dishType);
                 String randomDish = dishList.get(Main.random.nextInt(dishList.size()));
 
                 generatedDishesList.add(randomDish);
-            } else {
-                System.out.printf("Блюд типа \"%s\" нет в списке!", dishType);
-                System.exit(1); // Исключения еще не проходили, сделал выход таким
-            }
         }
         return generatedDishesList;
     }
 
-    private boolean checkType(String type) {
+    boolean checkType(String type) {
         return dishesList.containsKey(type);
     }
 
